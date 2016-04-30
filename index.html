@@ -16,55 +16,39 @@
   <div class="byline"><p>by <a href="https://github.com/clonezer">CloNEz</a></p><p>search box by <a href="http://speckyboy.com/2012/02/15/how-to-build-a-stylish-css3-search-box/">SpeckyBoy</a> featured on <a href="http://thecodeblock.com/search-box-tutorials-using-css3-jquery/">THE CODE BLOCK</a></p></div>
   </body>
 
+  <script src="https://www.parsecdn.com/js/parse-1.6.14.min.js"></script>
   <script type="text/javascript" charset="utf-8">
-		(function(_go_) {
-			function Sender(url, json, onreadystatechange, ready) {
-				console.log('sending..');
-				this.url = url;
-				this.params = (function(json) {
-					var d = new FormData();
-					for (var i in json) {
-						d.append(i, json[i]);
-					}
-					return d;
-				})(json);
-				this.onreadystatechange = onreadystatechange;
-				this.ready = ready;
-			}
 
-			Sender.prototype.postData = function() {
-				var self = this;
-				var xmlhttp = new XMLHttpRequest();
-				xmlhttp.onreadystatechange = function() {
-					self.onreadystatechange(xmlhttp);
-					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-						self.ready(xmlhttp);
-					};
-				};
-
-				xmlhttp.open('POST', self.url, true);
-				xmlhttp.send(this.params);
-			};
-			_go_.Sender = Sender;
-		})(window);
+    Parse.initialize("hHKsWbXm0dkFPu9ErZpO5wBHoWb0rhgvi5ycHmGx", "5EOOC04BM7OidbiWGJ0Es8yN6cp0IuziEMsVkZmm");
 
 		function send() {
-
+      document.getElementById('response').innerHTML = "กรุณารอสักครู่";
       var re = /\d{10}/;
       var str = document.getElementById('bill').value
       if (re.test(str)) {
-        try {
-  				new Sender('https://script.google.com/macros/s/AKfycbzizKZV9hAv7WO38-YZvxjc9as3AuVPEc15sKFFs9elz9te_uLu/exec', {
-  					'bill' : document.getElementById('bill').value
-  				}, function(xmlhttp) {
-  					document.getElementById('response').innerHTML = xmlhttp.responseText;
-  				}).postData();
-  			} catch(e) {
-  				document.getElementById('response').innerHTML = e.message;
-  			}
+        searchBillingNumber(str);
       }else {
         document.getElementById('response').innerHTML = "กรุณากรอกตัวเลขให้ถูกต้อง";
       }
 		}
+
+    function searchBillingNumber(billNo) {
+      var BillingRecord = Parse.Object.extend("BillingRecord");
+      var query = new Parse.Query(BillingRecord);
+      query.equalTo("billingNumber", billNo);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var object = results[0]
+            document.getElementById('response').innerHTML = "หมายเลข " + object.get('billingNumber') + " เคยมีการบันทึกไว้แล้ว";
+          }else {
+            document.getElementById('response').innerHTML = "ไม่พบหมายเลข " + billNo;
+          }
+        },
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+    }
 	</script>
 </html>
