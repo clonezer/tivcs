@@ -75,8 +75,8 @@
     function addNewRecord(billNo) {
       var BillingRecord = Parse.Object.extend("BillingRecord");
       var billing = new BillingRecord();
-      billing.set("billingNumber", ""+billNo);
-      billing.set("quantity", "1");
+      billing.set("billingNumber", billNo);
+      billing.set("quantity", 1);
       billing.save(null, {
         success: function(billing) {
           document.getElementById('response').innerHTML = "หมายเลข " + billNo + " ถูกบันทึกเรียบร้อยแล้ว";
