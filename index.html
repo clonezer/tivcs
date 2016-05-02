@@ -6,8 +6,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 </head>
-<body onload="hideResponse()">
-  <form class="form-wrapper cf">
+<body>
+  <form class="form-wrapper cf" onsubmit="return submitHandler()">
     <input type="text" placeholder="ค้นหาเลขที่ใบแจ้งหนี้.." id="bill" required>
     <button type="button" name="SEND" value="SEND" id="SEND" onclick="send()">ค้นหา</button>
   </form>

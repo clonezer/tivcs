@@ -1,5 +1,10 @@
 Parse.initialize("hHKsWbXm0dkFPu9ErZpO5wBHoWb0rhgvi5ycHmGx", "5EOOC04BM7OidbiWGJ0Es8yN6cp0IuziEMsVkZmm");
 
+var submitHandler = function() {
+  send();
+  return false;
+}
+
 function send() {
   var re = /\d{10}/;
   var str = document.getElementById('bill').value
@@ -14,7 +19,7 @@ function searchBillingNumber(billNo) {
   document.getElementById('response').innerHTML = "กรุณารอสักครู่...";
   var BillingRecord = Parse.Object.extend("BillingRecord");
   var query = new Parse.Query(BillingRecord);
-  query.equalTo("billingNumber", billNo);
+  query.equalTo("billingNumber", Number(billNo));
   query.find({
     success: function(results) {
       if (results.length > 0) {
@@ -35,7 +40,7 @@ function searchAndAddNewRecord(billNo) {
   var BillingRecord = Parse.Object.extend("BillingRecord");
   var query = new Parse.Query(BillingRecord);
 
-  query.equalTo("billingNumber", billNo);
+  query.equalTo("billingNumber", Number(billNo));
   query.find({
     success: function(results) {
       if (results.length == 0) {
@@ -54,7 +59,7 @@ function searchAndAddNewRecord(billNo) {
 function addNewRecord(billNo) {
   var BillingRecord = Parse.Object.extend("BillingRecord");
   var billing = new BillingRecord();
-  billing.set("billingNumber", billNo);
+  billing.set("billingNumber", Number(billNo));
   billing.set("quantity", 1);
   billing.save(null, {
     success: function(billing) {
@@ -64,5 +69,4 @@ function addNewRecord(billNo) {
       document.getElementById('response').innerHTML = "พบปัญหา: " + error.message;
     }
   });
-
 }
