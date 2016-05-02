@@ -4,16 +4,17 @@
   <meta charset="UTF-8">
   <title>ค้นหาเลขที่ใบแจ้งหนี้</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 </head>
-<body>
+<body onload="hideResponse()">
   <form class="form-wrapper cf">
-    <input type="text" placeholder="เลขที่ใบแจ้งหนี้..." id="bill" required>
+    <input type="text" placeholder="ค้นหาเลขที่ใบแจ้งหนี้.." id="bill" required>
     <button type="button" name="SEND" value="SEND" id="SEND" onclick="send()">ค้นหา</button>
   </form>
   <div class="response-wrapper">
     <div id="response"></div>
   </div>
-  <div class="byline"><p>by <a href="https://github.com/clonezer">CloNEz</a></p><p>search box by <a href="http://speckyboy.com/2012/02/15/how-to-build-a-stylish-css3-search-box/">SpeckyBoy</a> featured on <a href="http://thecodeblock.com/search-box-tutorials-using-css3-jquery/">THE CODE BLOCK</a></p></div>
+  <div class="byline"><p>by <a href="https://github.com/clonezer">CloNEz</a></p></div>
 </body>
 <script src="https://www.parsecdn.com/js/parse-1.6.14.min.js"></script>
 <script src="js/tivcs.js"></script>

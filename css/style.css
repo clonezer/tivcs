@@ -1,7 +1,7 @@
  body {
-        background: #555 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);
+        /*background: #555 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);*/
         font: 13px 'Lucida sans', Arial, Helvetica;
-        color: #eee;
+        color: #fff;
         text-align: center;
     }
 
@@ -30,7 +30,7 @@
       padding: 15px;
       margin: 15px auto 50px auto;
       background: #444;
-      background: rgba(0,0,0,.2);
+      background: rgba(0,0,0,.1);
       -moz-border-radius: 10px;
       -webkit-border-radius: 10px;
       border-radius: 10px;
@@ -45,7 +45,7 @@
         padding: 15px;
         margin: 150px auto 50px auto;
         background: #444;
-        background: rgba(0,0,0,.2);
+        background: rgba(0,0,0,.1);
         -moz-border-radius: 10px;
         -webkit-border-radius: 10px;
         border-radius: 10px;
@@ -105,7 +105,7 @@
         font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
         color: #fff;
         text-transform: uppercase;
-        background: #d83c3c;
+        background: #0072BC;
         -moz-border-radius: 0 3px 3px 0;
         -webkit-border-radius: 0 3px 3px 0;
         border-radius: 0 3px 3px 0;
@@ -113,12 +113,12 @@
     }
 
     .form-wrapper button:hover{
-        background: #e54040;
+        background: #2A92D6;
     }
 
     .form-wrapper button:active,
     .form-wrapper button:focus{
-        background: #c42f2f;
+        background: #125D8E;
     }
 
     .form-wrapper button:before {
@@ -126,17 +126,17 @@
         position: absolute;
         border-width: 8px 8px 8px 0;
         border-style: solid solid solid none;
-        border-color: transparent #d83c3c transparent;
+        border-color: transparent #0072BC transparent;
         top: 12px;
         left: -6px;
     }
 
     .form-wrapper button:hover:before{
-        border-right-color: #e54040;
+        border-right-color: #2A92D6;
     }
 
     .form-wrapper button:focus:before{
-        border-right-color: #c42f2f;
+        border-right-color: #125D8E;
     }
 
     .form-wrapper button::-moz-focus-inner {
@@ -145,12 +145,12 @@
     }
 .byline p{
   text-align:center;
-  color:#c6c6c6;
+  color:#65616A;
   font: bold 18px Arial, Helvetica, Sans-serif;
   text-shadow: 0 2px 3px rgba(0,0,0,0.1);
 }
 
 .byline p a{
-  color:#d83c3c;
+  color:#0072BC;
   text-decoration:none;
 }
