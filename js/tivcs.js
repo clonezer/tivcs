@@ -29,12 +29,17 @@ function searchBillingNumber(billNo) {
   recordIdRef.once('value').then(function(snapshot) {
     if (typeof snapshot.val() !== "undefined" && snapshot.val() !== null) {
       console.log("Found Object" + snapshot.val());
+
+      var createdAt = moment.unix(snapshot.val().createdAt).format('MMMM Do YYYY');
+      var updatedAt = moment.unix(snapshot.val().updatedAt).format('MMMM Do YYYY');
+
       var statusTitle = "<p>หมายเลข " + billNo + " เคยมีการบันทึกไว้แล้ว</p>"
-      var quantityTitle = "<p>เคยออกเอกสารไปแล้ว " + snapshot.val().quantity + " ครั้ง</p>";
+      var quantityTitle = "<p>เคยออกใบแทนไปแล้ว " + snapshot.val().quantity + " ครั้ง</p>";
+      var datetimeTitle = "<p>ออกเมื่อวันที่:\t" + createdAt + " <br>ออกใบแทนครั้งล่าสุด:\t" + updatedAt + "</p>";
       var addButton = "<p><a href=\"javascript:addQuantity(\'" + billNo + "\', " + snapshot.val().quantity + ")\">เพิ่มจำนวนการออกเอกสาร</a></p>";
       var delButton = "<p><a href=\"javascript:removeQuantity(\'" + billNo + "\', " + snapshot.val().quantity + ")\">ลดจำนวนการออกเอกสาร</a></p>";
 
-      document.getElementById('response').innerHTML = statusTitle + quantityTitle + addButton + delButton;
+      document.getElementById('response').innerHTML = statusTitle + quantityTitle + datetimeTitle + addButton + delButton;
     }else {
       console.log("Not Found");
       document.getElementById('response').innerHTML = "<p>ไม่พบหมายเลข " + billNo + "</p><p><a href=\"javascript:searchAndAddNewRecord(\'" + billNo + "\')\">เพิ่มในฐานข้อมูล</a></p>";
